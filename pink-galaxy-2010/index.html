@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>PINK GALAXY — Vũ Trụ Dịu Dàng Dành Tặng Nàng 20/10</title>
+  
+  <!-- Favicon / Meta -->
+  <meta name="description" content="Pink Galaxy 20/10 — Vũ trụ tím pastel và hồng neon dịu dàng tôn vinh người phụ nữ tuyệt vời.">
+  <meta name="theme-color" content="#090117">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Fullscreen Ambient Canvas Background -->
+  <canvas id="galaxy-canvas"></canvas>
+
+  <!-- Top Floating Header -->
+  <header class="top-header">
+    <div class="logo-brand" id="btn-restart-header" title="Trở về đầu trang">
+      <span class="sparkle-icon">✨</span>
+      <span class="brand-text">PINK GALAXY 20/10</span>
+    </div>
+
+    <div class="header-actions">
+      <!-- Recipient Badge / Quick Switch -->
+      <div class="recipient-badge" title="Tên người nhận thiệp">
+        <span>Gửi:</span>
+        <strong class="recipient-name-display">Nàng Thơ Tuyệt Vời</strong>
+      </div>
+
+      <!-- Music Equalizer Toggle -->
+      <button class="music-toggle" id="music-toggle" title="Bật/Tắt nhạc không gian dịu êm">
+        <div class="music-waves">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+    </div>
+  </header>
+
+  <!-- Right Vertical Journey Dots -->
+  <nav class="journey-nav" aria-label="Hành trình du hành">
+    <div class="nav-dot active" data-index="0">
+      <span class="dot-tooltip">1. Cánh Cổng Vũ Trụ</span>
+    </div>
+    <div class="nav-dot" data-index="1">
+      <span class="dot-tooltip">2. Pink Saturn</span>
+    </div>
+    <div class="nav-dot" data-index="2">
+      <span class="dot-tooltip">3. Chòm Sao Trái Tim</span>
+    </div>
+    <div class="nav-dot" data-index="3">
+      <span class="dot-tooltip">4. Vườn Hoa Ánh Sao</span>
+    </div>
+    <div class="nav-dot" data-index="4">
+      <span class="dot-tooltip">5. Bạn Thiên Hà</span>
+    </div>
+    <div class="nav-dot" data-index="5">
+      <span class="dot-tooltip">6. Mưa Sao Băng</span>
+    </div>
+    <div class="nav-dot" data-index="6">
+      <span class="dot-tooltip">7. Lá Thư 20/10</span>
+    </div>
+  </nav>
+
+  <!-- Bottom Journey Step Bar -->
+  <div class="bottom-controls">
+    <button class="btn-nav-step" id="btn-prev" disabled>
+      <span>◄</span> Cảnh Trước
+    </button>
+    <span class="step-counter" id="step-counter">1 / 7</span>
+    <button class="btn-nav-step" id="btn-next">
+      Tiếp Tục Du Hành <span>►</span>
+    </button>
+  </div>
+
+  <!-- Main Journey Sections Container -->
+  <main class="journey-container">
+
+    <!-- ==========================================
+         SECTION 1: CÁNH CỔNG VŨ TRỤ (COSMIC PORTAL)
+         ========================================== -->
+    <section class="journey-section active" id="sec-portal">
+      <div class="portal-content">
+        <div class="portal-halo">
+          <div class="portal-ring-outer"></div>
+          <div class="portal-ring-inner"></div>
+          <div class="portal-center-orb"></div>
+        </div>
+
+        <span class="badge-galaxy">✦ Chuyến Du Hành Ngọt Ngào 20/10 ✦</span>
+
+        <h1 class="title-cosmic">PINK GALAXY</h1>
+
+        <p class="quote-intro">
+          “Có một vũ trụ được tạo nên chỉ để tôn vinh những điều tuyệt vời nhất…”
+        </p>
+
+        <p class="desc-intro">
+          Chào mừng nàng đến với thiên hà tràn ngập ánh sáng ngọc trai, bụi sao lấp lánh và muôn vàn lời chúc dịu dàng nhất dành riêng cho phái đẹp ngày Phụ nữ Việt Nam.
+        </p>
+
+        <!-- Personalization Input -->
+        <div class="recipient-input-box">
+          <span>💌 Dành tặng riêng:</span>
+          <input type="text" id="recipient-input" placeholder="Nhập tên người bạn thương yêu..." maxlength="30">
+        </div>
+
+        <!-- Button to trigger warp transition -->
+        <button class="btn-explore" id="btn-explore">
+          <span>✨ Khám Phá Món Quà</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 2: HÀNH TINH PINK SATURN 3D
+         ========================================== -->
+    <section class="journey-section" id="sec-saturn">
+      <div class="saturn-container">
+        <div class="saturn-header">
+          <span class="badge-galaxy">Hành Tinh Kỳ Diệu</span>
+          <h2>Pink Saturn & Vũ Trụ 3D</h2>
+        </div>
+
+        <!-- Real 3D Planet System (Three.js WebGL + 3D Text Ribbons + Orbiting Cards) -->
+        <div class="planet-orbit-system" id="saturn-3d-system">
+          <div id="saturn-3d-canvas-container"></div>
+
+          <!-- 6 Orbiting Wish Badges (3D Projected, Text ALWAYS 100% Upright!) -->
+          <div class="orbit-wishes-3d-container" id="orbit-wishes-container">
+            <div class="wish-node-item" data-wish-id="0">
+              <div class="wish-node-badge">
+                <span class="node-sparkle">✦</span> Xinh Đẹp Theo Cách Riêng
+              </div>
+            </div>
+            <div class="wish-node-item" data-wish-id="1">
+              <div class="wish-node-badge">
+                <span class="node-sparkle">✦</span> Luôn Được Yêu Thương
+              </div>
+            </div>
+            <div class="wish-node-item" data-wish-id="2">
+              <div class="wish-node-badge">
+                <span class="node-sparkle">✦</span> Rực Rỡ & Tự Tin
+              </div>
+            </div>
+            <div class="wish-node-item" data-wish-id="3">
+              <div class="wish-node-badge">
+                <span class="node-sparkle">✦</span> Bình An Trong Tâm Hồn
+              </div>
+            </div>
+            <div class="wish-node-item" data-wish-id="4">
+              <div class="wish-node-badge">
+                <span class="node-sparkle">✦</span> Luôn Được Lắng Nghe
+              </div>
+            </div>
+            <div class="wish-node-item" data-wish-id="5">
+              <div class="wish-node-badge">
+                <span class="node-sparkle">✦</span> Ước Mơ Đơm Hoa
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 3: CHÒM SAO HÌNH TRÁI TIM
+         ========================================== -->
+    <section class="journey-section" id="sec-constellation">
+      <div class="constellation-wrapper">
+        <div class="constellation-header">
+          <span class="badge-galaxy">Bản Đồ Thiên Hà</span>
+          <h2>Chòm Sao Tình Yêu Vĩnh Cửu</h2>
+          <p>Các vì sao nối nhau vẽ nên trái tim rực sáng giữa bầu trời đêm tĩnh lặng</p>
+        </div>
+
+        <!-- Interactive SVG Constellation Stage -->
+        <div class="constellation-stage">
+          <svg class="constellation-svg" viewBox="0 0 600 390" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ff75a0" />
+                <stop offset="50%" stop-color="#ffeaa7" />
+                <stop offset="100%" stop-color="#c084fc" />
+              </linearGradient>
+            </defs>
+
+            <!-- ================= CONST-LINES LAYER ================= -->
+            <g class="const-lines-layer">
+              <!-- Outer Heart Perimeter Polygon (Closed loop: 12 vertices) -->
+              <polyline class="const-line" points="300,115 250,85 195,105 150,160 170,230 230,290 300,350 370,290 430,230 450,160 405,105 350,85 300,115" stroke="url(#lineGrad)" />
+
+              <!-- Central Vertical Axis -->
+              <line class="const-line" x1="300" y1="115" x2="300" y2="215" stroke="url(#lineGrad)" />
+              <line class="const-line" x1="300" y1="215" x2="300" y2="350" stroke="url(#lineGrad)" />
+
+              <!-- Left Interior Lattice -->
+              <line class="const-line" x1="300" y1="215" x2="235" y2="185" stroke="url(#lineGrad)" />
+              <line class="const-line" x1="235" y1="185" x2="250" y2="85" stroke="url(#lineGrad)" />
+              <line class="const-line" x1="235" y1="185" x2="150" y2="160" stroke="url(#lineGrad)" />
+              <line class="const-line" x1="235" y1="185" x2="170" y2="230" stroke="url(#lineGrad)" />
+              <line class="const-line" x1="300" y1="215" x2="230" y2="290" stroke="url(#lineGrad)" />
+
+              <!-- Right Interior Lattice -->
+              <line class="const-line" x1="300" y1="215" x2="365" y2="185" stroke="url(#lineGrad)" />
+              <line class="const-line" x1="365" y1="185" x2="350" y2="85" stroke="url(#lineGrad)" />
+              <line class="const-line" x1="365" y1="185" x2="450" y2="160" stroke="url(#lineGrad)" />
+              <line class="const-line" x1="365" y1="185" x2="430" y2="230" stroke="url(#lineGrad)" />
+              <line class="const-line" x1="300" y1="215" x2="370" y2="290" stroke="url(#lineGrad)" />
+
+              <!-- Crown Constellation Lines (Top) -->
+              <polyline class="const-line crown-line" points="250,48 275,24 300,40 325,24 350,48" />
+              <line class="const-line crown-line" x1="250" y1="48" x2="300" y2="56" />
+              <line class="const-line crown-line" x1="300" y1="56" x2="350" y2="48" />
+              <!-- Starlight connector beam from crown to heart -->
+              <line class="const-line connector-beam" x1="300" y1="56" x2="300" y2="115" />
+            </g>
+
+            <!-- ================= CONST-STARS LAYER ================= -->
+            <!-- Crown Stars -->
+            <g class="const-star-group" transform="translate(250, 48)"><circle class="const-star-halo" r="7"/><circle class="const-star-core gold-star" r="3.5"/></g>
+            <g class="const-star-group" transform="translate(275, 24)"><circle class="const-star-halo" r="7"/><circle class="const-star-core gold-star" r="4"/></g>
+            <g class="const-star-group" transform="translate(300, 40)"><circle class="const-star-halo" r="8"/><circle class="const-star-core gold-star" r="4.5"/></g>
+            <g class="const-star-group" transform="translate(325, 24)"><circle class="const-star-halo" r="7"/><circle class="const-star-core gold-star" r="4"/></g>
+            <g class="const-star-group" transform="translate(350, 48)"><circle class="const-star-halo" r="7"/><circle class="const-star-core gold-star" r="3.5"/></g>
+            <g class="const-star-group" transform="translate(300, 56)"><circle class="const-star-halo" r="6"/><circle class="const-star-core gold-star" r="3"/></g>
+
+            <!-- Outer Heart Stars -->
+            <g class="const-star-group" transform="translate(300, 115)"><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="4.5"/></g>
+            <g class="const-star-group" transform="translate(250, 85)"><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="4.5"/></g>
+            <g class="const-star-group" transform="translate(195, 105)"><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="5"/></g>
+            <g class="const-star-group" transform="translate(150, 160)"><circle class="const-star-halo" r="9"/><circle class="const-star-core" r="5.5"/></g>
+            <g class="const-star-group" transform="translate(170, 230)"><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="5"/></g>
+            <g class="const-star-group" transform="translate(230, 290)"><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="5"/></g>
+            
+            <!-- Bottom Tip (Grand Celestial Star) -->
+            <g class="const-star-group" transform="translate(300, 350)"><circle class="const-star-halo" r="11"/><circle class="const-star-core gold-star" r="6.5"/></g>
+
+            <g class="const-star-group" transform="translate(370, 290)"><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="5"/></g>
+            <g class="const-star-group" transform="translate(430, 230)"><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="5"/></g>
+            <g class="const-star-group" transform="translate(450, 160)"><circle class="const-star-halo" r="9"/><circle class="const-star-core" r="5.5"/></g>
+            <g class="const-star-group" transform="translate(405, 105)"><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="5"/></g>
+            <g class="const-star-group" transform="translate(350, 85)"><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="4.5"/></g>
+
+            <!-- Inner Heart Stars -->
+            <g class="const-star-group" transform="translate(235, 185)"><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="4.5"/></g>
+            <g class="const-star-group" transform="translate(365, 185)"><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="4.5"/></g>
+            
+            <!-- Pulsing Heart Core Star -->
+            <g class="const-star-group" transform="translate(300, 215)"><circle class="const-star-halo" r="12"/><circle class="const-star-core core-pulse" r="7"/></g>
+          </svg>
+        </div>
+
+        <div class="constellation-actions">
+          <button class="btn-secondary" id="btn-light-constellation">
+            <span>💖 Thắp Sáng Toàn Bộ Chòm Sao</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 4: KHU VƯỜN HOA ÁNH SAO (STAR FLOWER GARDEN)
+         ========================================== -->
+    <section class="journey-section" id="sec-garden">
+      <div class="garden-wrapper">
+        <div class="garden-header">
+          <span class="badge-galaxy">Hương Sắc Vũ Trụ</span>
+          <h2>Khu Vườn Hoa Ánh Sao 20/10</h2>
+          <p>Mỗi đóa hoa nở rộ từ những hạt bụi tinh tú, mang theo một thông điệp trân quý</p>
+        </div>
+
+        <div class="flowers-grid">
+          <!-- Flower 1: Rose (Hoa Hồng Tinh Vân) -->
+          <div class="flower-card" data-flower="rose">
+            <div class="flower-svg-wrapper">
+              <svg viewBox="0 0 100 125" fill="none">
+                <defs>
+                  <linearGradient id="roseStemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#34d399"/>
+                    <stop offset="100%" stop-color="#059669"/>
+                  </linearGradient>
+                  <linearGradient id="roseLeafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#10b981"/>
+                    <stop offset="100%" stop-color="#047857"/>
+                  </linearGradient>
+                  <radialGradient id="roseOuterGrad" cx="50%" cy="40%" r="60%">
+                    <stop offset="0%" stop-color="#fb7185"/>
+                    <stop offset="70%" stop-color="#e11d48"/>
+                    <stop offset="100%" stop-color="#9f1239"/>
+                  </radialGradient>
+                  <radialGradient id="roseMidGrad" cx="50%" cy="35%" r="55%">
+                    <stop offset="0%" stop-color="#fda4af"/>
+                    <stop offset="60%" stop-color="#f43f5e"/>
+                    <stop offset="100%" stop-color="#be123c"/>
+                  </radialGradient>
+                  <radialGradient id="roseCoreGrad" cx="45%" cy="35%" r="50%">
+                    <stop offset="0%" stop-color="#ffe4e6"/>
+                    <stop offset="50%" stop-color="#fb7185"/>
+                    <stop offset="100%" stop-color="#9f1239"/>
+                  </radialGradient>
+                </defs>
+
+                <!-- Stem -->
+                <path d="M50 120 C50 92 48 70 50 56" stroke="url(#roseStemGrad)" stroke-width="3.5" stroke-linecap="round"/>
+                
+                <!-- Leaves with veins -->
+                <g class="rose-leaf-left">
+                  <path d="M49 92 C30 88 18 72 22 58 C35 64 43 78 49 88 Z" fill="url(#roseLeafGrad)" stroke="#059669" stroke-width="0.8"/>
+                  <path d="M49 88 C38 78 30 70 24 62" stroke="#6ee7b7" stroke-width="1" fill="none" opacity="0.8"/>
+                </g>
+                <g class="rose-leaf-right">
+                  <path d="M51 82 C70 78 82 64 78 50 C65 56 57 68 51 78 Z" fill="url(#roseLeafGrad)" stroke="#059669" stroke-width="0.8"/>
+                  <path d="M51 78 C62 70 70 60 74 54" stroke="#6ee7b7" stroke-width="1" fill="none" opacity="0.8"/>
+                </g>
+
+                <!-- Calyx Sepals under Blossom -->
+                <path d="M40 56 C34 62 26 66 22 68 C28 62 36 58 42 55 Z" fill="#047857"/>
+                <path d="M60 56 C66 62 74 66 78 68 C72 62 64 58 58 55 Z" fill="#047857"/>
+                <path d="M46 57 C48 64 50 68 50 70 C50 68 52 64 54 57 Z" fill="#059669"/>
+
+                <!-- Layer 1: Outermost Rose Petals (Large Cup) -->
+                <path d="M22 36 C18 20 36 12 50 16 C64 12 82 20 78 36 C74 54 50 58 22 36 Z" fill="url(#roseOuterGrad)" opacity="0.95"/>
+                <path d="M18 34 C15 46 28 58 48 56 C32 54 22 44 18 34 Z" fill="url(#roseOuterGrad)"/>
+                <path d="M82 34 C85 46 72 58 52 56 C68 54 78 44 82 34 Z" fill="url(#roseOuterGrad)"/>
+
+                <!-- Layer 2: Middle Blooming Petals -->
+                <path d="M26 28 C28 16 44 15 50 22 C42 20 32 23 26 28 Z" fill="url(#roseMidGrad)"/>
+                <path d="M74 28 C72 16 56 15 50 22 C58 20 68 23 74 28 Z" fill="url(#roseMidGrad)"/>
+                <path d="M28 38 C28 48 42 54 50 53 C58 54 72 48 72 38 C64 45 36 45 28 38 Z" fill="url(#roseMidGrad)"/>
+
+                <!-- Layer 3: Inner Curving Swirl Petals -->
+                <path d="M33 30 C34 20 48 18 52 26 C44 24 37 26 33 30 Z" fill="url(#roseCoreGrad)"/>
+                <path d="M67 30 C66 20 52 18 48 26 C56 24 63 26 67 30 Z" fill="url(#roseCoreGrad)"/>
+                <path d="M36 34 C38 24 62 24 64 34 C60 42 40 42 36 34 Z" fill="url(#roseMidGrad)"/>
+
+                <!-- Layer 4: Tight Center Bud Rosette -->
+                <path d="M42 26 C44 20 56 20 58 26 C54 32 46 32 42 26 Z" fill="url(#roseCoreGrad)"/>
+                <path d="M46 25 C47 22 53 22 54 25 C52 28 48 28 46 25 Z" fill="#9f1239"/>
+
+                <!-- Sparkling Stardust Accents -->
+                <circle cx="36" cy="24" r="1.2" fill="#fff" opacity="0.9"/>
+                <circle cx="62" cy="22" r="1.5" fill="#ffeaa7" opacity="0.9"/>
+                <circle cx="48" cy="40" r="1.2" fill="#fff" opacity="0.8"/>
+              </svg>
+            </div>
+            <h3>Hoa Hồng Tinh Vân</h3>
+            <span class="flower-tag">Yêu Thương & Rạng Rỡ</span>
+            <p class="flower-desc">Đóa hồng vĩnh cửu ngát hương giữa dải ngân hà ngọt ngào.</p>
+          </div>
+
+          <!-- Flower 2: Tulip (Hoa Tulip Ánh Trăng) -->
+          <div class="flower-card" data-flower="tulip">
+            <div class="flower-svg-wrapper">
+              <svg viewBox="0 0 100 125" fill="none">
+                <defs>
+                  <linearGradient id="tulipStemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#34d399"/>
+                    <stop offset="100%" stop-color="#059669"/>
+                  </linearGradient>
+                  <linearGradient id="tulipLeafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#10b981"/>
+                    <stop offset="100%" stop-color="#047857"/>
+                  </linearGradient>
+                  <linearGradient id="tulipBackGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#d946ef"/>
+                    <stop offset="50%" stop-color="#a855f7"/>
+                    <stop offset="100%" stop-color="#7e22ce"/>
+                  </linearGradient>
+                  <linearGradient id="tulipLeftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#f472b6"/>
+                    <stop offset="60%" stop-color="#ec4899"/>
+                    <stop offset="100%" stop-color="#be185d"/>
+                  </linearGradient>
+                  <linearGradient id="tulipRightGrad" x1="100%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#f472b6"/>
+                    <stop offset="60%" stop-color="#c084fc"/>
+                    <stop offset="100%" stop-color="#9333ea"/>
+                  </linearGradient>
+                  <linearGradient id="tulipFrontGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#fdf2f8"/>
+                    <stop offset="40%" stop-color="#f472b6"/>
+                    <stop offset="100%" stop-color="#db2777"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- Stem -->
+                <path d="M50 120 C50 90 48 68 50 48" stroke="url(#tulipStemGrad)" stroke-width="3.8" stroke-linecap="round"/>
+                
+                <!-- Long Graceful Tulip Leaves -->
+                <path d="M48 115 C28 98 16 68 22 44 C32 58 42 84 48 98 Z" fill="url(#tulipLeafGrad)"/>
+                <path d="M52 110 C72 95 84 70 80 48 C70 62 60 86 52 96 Z" fill="url(#tulipLeafGrad)"/>
+
+                <!-- Tulip Petals Layer 1: Back Cup Petals -->
+                <path d="M34 26 C36 12 64 12 66 26 C64 46 36 46 34 26 Z" fill="url(#tulipBackGrad)"/>
+
+                <!-- Tulip Petals Layer 2: Side Curved Petals -->
+                <path d="M25 36 C22 18 42 16 48 30 C46 50 32 54 25 36 Z" fill="url(#tulipLeftGrad)"/>
+                <path d="M75 36 C78 18 58 16 52 30 C54 50 68 54 75 36 Z" fill="url(#tulipRightGrad)"/>
+
+                <!-- Tulip Petals Layer 3: Central Front Petal with Soft Specular Curve -->
+                <path d="M36 46 C32 28 42 19 50 18 C58 19 68 28 64 46 C58 56 42 56 36 46 Z" fill="url(#tulipFrontGrad)"/>
+                <path d="M40 38 C42 26 48 22 50 20" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.8"/>
+
+                <!-- Delicate Dewdrops & Starlight -->
+                <circle cx="50" cy="30" r="1.5" fill="#ffffff" opacity="0.9"/>
+                <circle cx="34" cy="40" r="1.2" fill="#ffeaa7" opacity="0.8"/>
+              </svg>
+            </div>
+            <h3>Hoa Tulip Ánh Trăng</h3>
+            <span class="flower-tag">Tự Tin & Duyên Dáng</span>
+            <p class="flower-desc">Vươn mình kiêu hãnh và thanh lịch trong màn đêm huyền ảo.</p>
+          </div>
+
+          <!-- Flower 3: Daisy (Cúc Họa Mi Bụi Sao) -->
+          <div class="flower-card" data-flower="daisy">
+            <div class="flower-svg-wrapper">
+              <svg viewBox="0 0 100 125" fill="none">
+                <defs>
+                  <linearGradient id="daisyStemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#34d399"/>
+                    <stop offset="100%" stop-color="#059669"/>
+                  </linearGradient>
+                  <radialGradient id="daisyDiscGrad" cx="45%" cy="40%" r="55%">
+                    <stop offset="0%" stop-color="#fef08a"/>
+                    <stop offset="50%" stop-color="#f59e0b"/>
+                    <stop offset="100%" stop-color="#b45309"/>
+                  </radialGradient>
+                  <linearGradient id="petalShadowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#ffffff"/>
+                    <stop offset="100%" stop-color="#fbcfe8"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- Stem -->
+                <path d="M50 120 C48 94 50 72 50 50" stroke="url(#daisyStemGrad)" stroke-width="3.5" stroke-linecap="round"/>
+                
+                <!-- Serrated Daisy Leaves -->
+                <path d="M49 90 C34 86 28 78 30 68 C36 74 42 78 49 84 Z" fill="#10b981"/>
+                <path d="M51 82 C66 78 72 70 70 60 C64 66 58 70 51 76 Z" fill="#10b981"/>
+
+                <!-- Flower Head Group -->
+                <g transform="translate(50, 42)">
+                  <!-- Back Petal Layer (16 petals for dense realistic depth) -->
+                  <g opacity="0.85">
+                    <ellipse cx="0" cy="-24" rx="4.5" ry="14" fill="url(#petalShadowGrad)" transform="rotate(0)"/>
+                    <ellipse cx="0" cy="-24" rx="4.5" ry="14" fill="url(#petalShadowGrad)" transform="rotate(22.5)"/>
+                    <ellipse cx="0" cy="-24" rx="4.5" ry="14" fill="url(#petalShadowGrad)" transform="rotate(45)"/>
+                    <ellipse cx="0" cy="-24" rx="4.5" ry="14" fill="url(#petalShadowGrad)" transform="rotate(67.5)"/>
+                    <ellipse cx="0" cy="-24" rx="4.5" ry="14" fill="url(#petalShadowGrad)" transform="rotate(90)"/>
+                    <ellipse cx="0" cy="-24" rx="4.5" ry="14" fill="url(#petalShadowGrad)" transform="rotate(112.5)"/>
+                    <ellipse cx="0" cy="-24" rx="4.5" ry="14" fill="url(#petalShadowGrad)" transform="rotate(135)"/>
+                    <ellipse cx="0" cy="-24" rx="4.5" ry="14" fill="url(#petalShadowGrad)" transform="rotate(157.5)"/>
+                    <ellipse cx="0" cy="-24" rx="4.5" ry="14" fill="url(#petalShadowGrad)" transform="rotate(180)"/>
+                    <ellipse cx="0" cy="-24" rx="4.5" ry="14" fill="url(#petalShadowGrad)" transform="rotate(202.5)"/>
+                    <ellipse cx="0" cy="-24" rx="4.5" ry="14" fill="url(#petalShadowGrad)" transform="rotate(225)"/>
+                    <ellipse cx="0" cy="-24" rx="4.5" ry="14" fill="url(#petalShadowGrad)" transform="rotate(247.5)"/>
+                    <ellipse cx="0" cy="-24" rx="4.5" ry="14" fill="url(#petalShadowGrad)" transform="rotate(270)"/>
+                    <ellipse cx="0" cy="-24" rx="4.5" ry="14" fill="url(#petalShadowGrad)" transform="rotate(292.5)"/>
+                    <ellipse cx="0" cy="-24" rx="4.5" ry="14" fill="url(#petalShadowGrad)" transform="rotate(315)"/>
+                    <ellipse cx="0" cy="-24" rx="4.5" ry="14" fill="url(#petalShadowGrad)" transform="rotate(337.5)"/>
+                  </g>
+
+                  <!-- Front Petal Layer (16 pristine white petals offset by 11.25 deg) -->
+                  <g filter="drop-shadow(0 2px 4px rgba(0,0,0,0.15))">
+                    <ellipse cx="0" cy="-23" rx="4.2" ry="13.5" fill="#ffffff" transform="rotate(11.25)"/>
+                    <ellipse cx="0" cy="-23" rx="4.2" ry="13.5" fill="#ffffff" transform="rotate(33.75)"/>
+                    <ellipse cx="0" cy="-23" rx="4.2" ry="13.5" fill="#ffffff" transform="rotate(56.25)"/>
+                    <ellipse cx="0" cy="-23" rx="4.2" ry="13.5" fill="#ffffff" transform="rotate(78.75)"/>
+                    <ellipse cx="0" cy="-23" rx="4.2" ry="13.5" fill="#ffffff" transform="rotate(101.25)"/>
+                    <ellipse cx="0" cy="-23" rx="4.2" ry="13.5" fill="#ffffff" transform="rotate(123.75)"/>
+                    <ellipse cx="0" cy="-23" rx="4.2" ry="13.5" fill="#ffffff" transform="rotate(146.25)"/>
+                    <ellipse cx="0" cy="-23" rx="4.2" ry="13.5" fill="#ffffff" transform="rotate(168.75)"/>
+                    <ellipse cx="0" cy="-23" rx="4.2" ry="13.5" fill="#ffffff" transform="rotate(191.25)"/>
+                    <ellipse cx="0" cy="-23" rx="4.2" ry="13.5" fill="#ffffff" transform="rotate(213.75)"/>
+                    <ellipse cx="0" cy="-23" rx="4.2" ry="13.5" fill="#ffffff" transform="rotate(236.25)"/>
+                    <ellipse cx="0" cy="-23" rx="4.2" ry="13.5" fill="#ffffff" transform="rotate(258.75)"/>
+                    <ellipse cx="0" cy="-23" rx="4.2" ry="13.5" fill="#ffffff" transform="rotate(281.25)"/>
+                    <ellipse cx="0" cy="-23" rx="4.2" ry="13.5" fill="#ffffff" transform="rotate(303.75)"/>
+                    <ellipse cx="0" cy="-23" rx="4.2" ry="13.5" fill="#ffffff" transform="rotate(326.25)"/>
+                    <ellipse cx="0" cy="-23" rx="4.2" ry="13.5" fill="#ffffff" transform="rotate(348.75)"/>
+                  </g>
+
+                  <!-- Golden 3D Stamen Disc -->
+                  <circle cx="0" cy="0" r="11" fill="url(#daisyDiscGrad)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.3))"/>
+                  
+                  <!-- Textured Pollen Ring -->
+                  <circle cx="-5" cy="-5" r="1.5" fill="#fef08a"/>
+                  <circle cx="5" cy="-5" r="1.5" fill="#fef08a"/>
+                  <circle cx="-6" cy="3" r="1.5" fill="#d97706"/>
+                  <circle cx="6" cy="3" r="1.5" fill="#d97706"/>
+                  <circle cx="0" cy="-7" r="1.6" fill="#fff"/>
+                  <circle cx="0" cy="6" r="1.6" fill="#b45309"/>
+                  <circle cx="0" cy="0" r="3" fill="#fef08a" opacity="0.9"/>
+                </g>
+              </svg>
+            </div>
+            <h3>Cúc Họa Mi Bụi Sao</h3>
+            <span class="flower-tag">Bình An & Thuần Khiết</span>
+            <p class="flower-desc">Đóa hoa nhỏ mang lại sự thanh tịnh, ấm áp cho tâm hồn.</p>
+          </div>
+
+          <!-- Flower 4: Lily (Bách Hợp Thiên Hà / Stargazer Lily) -->
+          <div class="flower-card" data-flower="lily">
+            <div class="flower-svg-wrapper">
+              <svg viewBox="0 0 100 125" fill="none">
+                <defs>
+                  <linearGradient id="lilyStemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#34d399"/>
+                    <stop offset="100%" stop-color="#059669"/>
+                  </linearGradient>
+                  <linearGradient id="lilyPetalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ffffff"/>
+                    <stop offset="30%" stop-color="#fbcfe8"/>
+                    <stop offset="70%" stop-color="#f43f5e"/>
+                    <stop offset="100%" stop-color="#e11d48"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- Stem -->
+                <path d="M50 120 C50 96 48 74 50 54" stroke="url(#lilyStemGrad)" stroke-width="3.5" stroke-linecap="round"/>
+                
+                <!-- Slender Pointed Lily Leaves -->
+                <path d="M49 92 C32 90 20 80 24 64 C32 74 42 82 49 88 Z" fill="#10b981"/>
+                <path d="M51 86 C68 84 80 74 76 58 C68 68 58 76 51 82 Z" fill="#10b981"/>
+
+                <!-- 6 Flared Recurved Stargazer Lily Petals -->
+                <!-- Petal 1: Top Center Petal -->
+                <path d="M50 48 C42 34 38 16 50 8 C62 16 58 34 50 48 Z" fill="url(#lilyPetalGrad)"/>
+                <path d="M50 48 L50 14" stroke="#e11d48" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+
+                <!-- Petal 2: Top Left Petal -->
+                <path d="M50 48 C36 44 18 36 14 24 C26 22 42 34 50 48 Z" fill="url(#lilyPetalGrad)"/>
+                <path d="M50 48 L22 28" stroke="#e11d48" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+
+                <!-- Petal 3: Top Right Petal -->
+                <path d="M50 48 C64 44 82 36 86 24 C74 22 58 34 50 48 Z" fill="url(#lilyPetalGrad)"/>
+                <path d="M50 48 L78 28" stroke="#e11d48" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+
+                <!-- Petal 4: Bottom Left Recurved Petal -->
+                <path d="M50 48 C36 50 18 56 16 70 C28 66 42 56 50 48 Z" fill="url(#lilyPetalGrad)"/>
+                <path d="M50 48 L24 62" stroke="#e11d48" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+
+                <!-- Petal 5: Bottom Right Recurved Petal -->
+                <path d="M50 48 C64 50 82 56 84 70 C72 66 58 56 50 48 Z" fill="url(#lilyPetalGrad)"/>
+                <path d="M50 48 L76 62" stroke="#e11d48" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+
+                <!-- Petal 6: Bottom Center Petal -->
+                <path d="M50 48 C44 56 42 70 50 78 C58 70 56 56 50 48 Z" fill="url(#lilyPetalGrad)"/>
+                <path d="M50 48 L50 72" stroke="#e11d48" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+
+                <!-- Papillae Freckles on Petals -->
+                <circle cx="48" cy="30" r="1" fill="#9f1239"/>
+                <circle cx="52" cy="24" r="1" fill="#9f1239"/>
+                <circle cx="34" cy="38" r="1" fill="#9f1239"/>
+                <circle cx="66" cy="38" r="1" fill="#9f1239"/>
+                <circle cx="36" cy="54" r="1" fill="#9f1239"/>
+                <circle cx="64" cy="54" r="1" fill="#9f1239"/>
+
+                <!-- Stamens & Golden-brown Anthers -->
+                <path d="M50 48 Q40 40 36 32" stroke="#fef08a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                <ellipse cx="36" cy="32" rx="2.5" ry="1.2" transform="rotate(-30 36 32)" fill="#b45309"/>
+
+                <path d="M50 48 Q60 40 64 32" stroke="#fef08a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                <ellipse cx="64" cy="32" rx="2.5" ry="1.2" transform="rotate(30 64 32)" fill="#b45309"/>
+
+                <path d="M50 48 Q42 56 38 64" stroke="#fef08a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                <ellipse cx="38" cy="64" rx="2.5" ry="1.2" transform="rotate(40 38 64)" fill="#b45309"/>
+
+                <path d="M50 48 Q58 56 62 64" stroke="#fef08a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                <ellipse cx="62" cy="64" rx="2.5" ry="1.2" transform="rotate(-40 62 64)" fill="#b45309"/>
+
+                <!-- Central Green Pistil & Stigma -->
+                <path d="M50 48 L50 36" stroke="#34d399" stroke-width="2" stroke-linecap="round" fill="none"/>
+                <circle cx="50" cy="35" r="2.2" fill="#86efac"/>
+              </svg>
+            </div>
+            <h3>Bách Hợp Thiên Hà</h3>
+            <span class="flower-tag">Hạnh Phúc & Quý Phái</span>
+            <p class="flower-desc">Lời chúc vẹn toàn, ngọt ngào và may mắn theo bước nàng.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 5: NHỮNG NGƯỜI BẠN THIÊN HÀ (GALAXY PETS)
+         ========================================== -->
+    <section class="journey-section" id="sec-friends">
+      <div class="pets-wrapper">
+        <div class="pets-header">
+          <span class="badge-galaxy">Sứ Giả Dễ Thương</span>
+          <h2>Những Người Bạn Thiên Hà</h2>
+          <p>Các sinh linh vũ trụ đang mang theo những món quà và nụ cười gửi đến nàng</p>
+        </div>
+
+        <div class="pets-grid">
+          <!-- Pet 1: White Cat on Moon (Mèo Mây Trắng Cưỡi Trăng Khuyết) -->
+          <div class="pet-card" data-pet="cat">
+            <div class="speech-bubble">
+              “Hôm nay cậu là công chúa, ngày mai cũng thế, và tất cả những ngày sau nữa! 👑”
+            </div>
+            <div class="pet-illustration-box">
+              <svg viewBox="0 0 120 120" class="cat-moon-rocking">
+                <defs>
+                  <linearGradient id="moonGlowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#fffbeb"/>
+                    <stop offset="40%" stop-color="#fef08a"/>
+                    <stop offset="100%" stop-color="#f59e0b"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- Golden Crescent Moon Cradle -->
+                <path d="M 15 35 C 10 75 35 110 65 110 C 88 110 102 85 105 30 C 95 72 75 88 52 88 C 30 88 18 62 15 35 Z" fill="url(#moonGlowGrad)" filter="drop-shadow(0 0 10px rgba(254, 240, 138, 0.7))"/>
+
+                <!-- Dangling Star from Moon Horn -->
+                <line x1="105" y1="30" x2="105" y2="45" stroke="#ffeaa7" stroke-width="1" stroke-dasharray="2 2"/>
+                <polygon points="105,45 107,49 111,49 108,52 109,56 105,53 101,56 102,52 99,49 103,49" fill="#fde047" filter="drop-shadow(0 0 4px #ffeaa7)"/>
+
+                <!-- Cat Tail hanging under the moon cradle -->
+                <path class="cat-tail" d="M 38 84 C 26 92 24 104 32 112 C 37 116 43 111 39 105 C 35 99 35 92 42 86" fill="#ffffff" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.15))"/>
+
+                <!-- White Cat Body cuddled INSIDE Moon Cradle -->
+                <ellipse cx="60" cy="74" rx="20" ry="16" fill="#ffffff"/>
+                <ellipse cx="60" cy="77" rx="14" ry="10" fill="#fdf2f8"/>
+
+                <!-- Two Little Paws resting over Moon Rim -->
+                <ellipse cx="50" cy="79" rx="5" ry="3.5" fill="#ffffff" stroke="#fbcfe8" stroke-width="0.8"/>
+                <ellipse cx="66" cy="79" rx="5" ry="3.5" fill="#ffffff" stroke="#fbcfe8" stroke-width="0.8"/>
+                <circle cx="50" cy="80" r="1.2" fill="#f472b6"/>
+                <circle cx="66" cy="80" r="1.2" fill="#f472b6"/>
+
+                <!-- Fluffy Cat Head -->
+                <circle cx="58" cy="52" r="16" fill="#ffffff"/>
+                
+                <!-- Ears with pink insides -->
+                <polygon points="46,42 42,26 54,37" fill="#ffffff"/>
+                <polygon points="46,40 43,29 52,37" fill="#fbcfe8"/>
+                <polygon points="62,37 74,26 70,42" fill="#ffffff"/>
+                <polygon points="64,37 73,29 70,40" fill="#fbcfe8"/>
+
+                <!-- Happy sleeping eyes ^ ^ -->
+                <path d="M 49 51 Q 53 47 57 51" stroke="#4c1d95" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                <path d="M 63 51 Q 67 47 71 51" stroke="#4c1d95" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+
+                <!-- Blushing Cheeks -->
+                <ellipse cx="47" cy="56" rx="3.5" ry="2" fill="#fbcfe8" opacity="0.9"/>
+                <ellipse cx="73" cy="56" rx="3.5" ry="2" fill="#fbcfe8" opacity="0.9"/>
+
+                <!-- Nose & Mouth -->
+                <polygon points="59,53 61,53 60,55" fill="#f43f5e"/>
+                <path d="M 57 56 Q 60 58 60 56 Q 60 58 63 56" stroke="#4c1d95" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+
+                <!-- Whiskers -->
+                <path d="M 43 54 L 35 53 M 43 56 L 34 57" stroke="#e2e8f0" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M 77 54 L 85 53 M 77 56 L 86 57" stroke="#e2e8f0" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Mèo Mây Trắng</h3>
+            <span class="pet-action-prompt">Chạm vào tớ để nghe lời chúc vui vẻ 🐾</span>
+          </div>
+
+          <!-- Pet 2: Pink-eared Bunny (Thỏ Ngọc Ôm Trái Tim Nhịp Đập) -->
+          <div class="pet-card" data-pet="bunny">
+            <div class="speech-bubble">
+              “Nụ cười của cậu chính là thứ thắp sáng cả dải ngân hà này đấy! ⭐”
+            </div>
+            <div class="pet-illustration-box">
+              <svg viewBox="0 0 120 120" class="bunny-character">
+                <defs>
+                  <linearGradient id="bunnyHeartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ff75a0"/>
+                    <stop offset="60%" stop-color="#ff4d94"/>
+                    <stop offset="100%" stop-color="#be185d"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- Bunny Soft Animated Ears -->
+                <g class="bunny-ears-group">
+                  <g class="bunny-ear-left">
+                    <path d="M 48 34 C 44 16 38 4 46 2 C 54 0 56 16 54 32 Z" fill="#ffffff" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.1))"/>
+                    <path d="M 48 30 C 46 18 42 8 46 6 C 50 4 52 18 51 28 Z" fill="#f472b6"/>
+                  </g>
+                  <g class="bunny-ear-right">
+                    <path d="M 68 34 C 72 16 78 4 70 2 C 62 0 60 16 62 32 Z" fill="#ffffff" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.1))"/>
+                    <path d="M 68 30 C 70 18 74 8 70 6 C 66 4 64 18 65 28 Z" fill="#f472b6"/>
+                  </g>
+                </g>
+
+                <!-- Fluffy Bunny Body -->
+                <ellipse cx="60" cy="78" rx="22" ry="20" fill="#ffffff" filter="drop-shadow(0 4px 8px rgba(0,0,0,0.1))"/>
+
+                <!-- Glowing Beating Heart Held in Bunny Arms -->
+                <g class="bunny-heart-hug">
+                  <path d="M 60 62 C 48 48 32 60 48 76 L 60 88 L 72 76 C 88 60 72 48 60 62 Z" fill="url(#bunnyHeartGrad)" filter="drop-shadow(0 0 12px #ff4d94)"/>
+                  <circle cx="54" cy="65" r="2" fill="#fff" opacity="0.8"/>
+                </g>
+
+                <!-- Chubby Bunny Paws Hugging Heart -->
+                <ellipse cx="44" cy="72" rx="6" ry="4" transform="rotate(25 44 72)" fill="#ffffff" stroke="#fbcfe8" stroke-width="0.8"/>
+                <ellipse cx="76" cy="72" rx="6" ry="4" transform="rotate(-25 76 72)" fill="#ffffff" stroke="#fbcfe8" stroke-width="0.8"/>
+
+                <!-- Cute Round Head & Cheeks -->
+                <circle cx="60" cy="48" r="18" fill="#ffffff"/>
+                <ellipse cx="44" cy="53" rx="7" ry="5" fill="#ffffff"/>
+                <ellipse cx="76" cy="53" rx="7" ry="5" fill="#ffffff"/>
+
+                <!-- Sparkling Big Anime Galaxy Eyes -->
+                <ellipse cx="52" cy="46" rx="3.8" ry="4.8" fill="#3b0764"/>
+                <circle cx="51" cy="44" r="1.6" fill="#ffffff"/>
+                <circle cx="53.5" cy="47.5" r="0.9" fill="#ffffff"/>
+
+                <ellipse cx="68" cy="46" rx="3.8" ry="4.8" fill="#3b0764"/>
+                <circle cx="67" cy="44" r="1.6" fill="#ffffff"/>
+                <circle cx="69.5" cy="47.5" r="0.9" fill="#ffffff"/>
+
+                <!-- Blushing Rosy Cheeks -->
+                <ellipse cx="46" cy="52" rx="4.5" ry="2.5" fill="#fbcfe8" opacity="0.95"/>
+                <ellipse cx="74" cy="52" rx="4.5" ry="2.5" fill="#fbcfe8" opacity="0.95"/>
+
+                <!-- Cute Pink Nose & Mouth -->
+                <ellipse cx="60" cy="50" rx="2" ry="1.4" fill="#f43f5e"/>
+                <path d="M 58 52 Q 60 54 62 52" stroke="#4c1d95" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+              </svg>
+            </div>
+            <h3>Thỏ Ngọc Thiên Hà</h3>
+            <span class="pet-action-prompt">Chạm vào tớ để nhận trái tim ấm áp 💖</span>
+          </div>
+
+          <!-- Pet 3: Galaxy Space Puppy -->
+          <div class="pet-card" data-pet="dog">
+            <div class="speech-bubble">
+              “Cún đem phong thư vũ trụ đến gửi riêng cho nàng đây! Gâu gâu! 💌”
+            </div>
+            <div class="pet-illustration-box">
+              <svg viewBox="0 0 120 120" class="dog-floating">
+                <!-- Little Astronaut Helmet Halo -->
+                <circle cx="60" cy="55" r="28" fill="rgba(192, 132, 252, 0.2)" stroke="#c084fc" stroke-width="1.5" />
+                <!-- Puppy Head -->
+                <circle cx="60" cy="54" r="16" fill="#fef08a" />
+                <!-- Floppy Ears -->
+                <ellipse cx="44" cy="50" rx="6" ry="12" fill="#d97706" />
+                <ellipse cx="76" cy="50" rx="6" ry="12" fill="#d97706" />
+                <!-- Face -->
+                <circle cx="55" cy="53" r="2" fill="#000" />
+                <circle cx="65" cy="53" r="2" fill="#000" />
+                <ellipse cx="60" cy="58" rx="2.5" ry="1.8" fill="#000" />
+                <!-- 20/10 Envelope in mouth/paws -->
+                <rect x="48" y="72" width="24" height="16" rx="2" fill="#ffffff" stroke="#ff4d94" stroke-width="1" />
+                <path d="M48 72 L60 81 L72 72" stroke="#ff4d94" stroke-width="1" fill="none" />
+                <text x="60" y="86" font-size="6" fill="#ff4d94" text-anchor="middle" font-weight="bold">20/10</text>
+              </svg>
+            </div>
+            <h3>Cún Con Sao Băng</h3>
+            <span class="pet-action-prompt">Chạm vào tớ để mở phong thư đặc biệt 🐶</span>
+          </div>
+        </div>
+
+        <!-- Secret Easter Egg Star -->
+        <div style="margin-top: 24px; cursor: pointer;" id="secret-pet-star" title="Bí mật thiên hà ẩn giấu...">
+          <span style="font-size: 1.2rem; color: #ffeaa7;">⭐</span>
+          <span style="font-size: 0.8rem; color: rgba(255, 182, 217, 0.6); margin-left: 6px;">Có một ngôi sao bí mật đang thì thầm điều gì đó...</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 6: CƠN MƯA SAO BĂNG ƯỚC NGUYỆN (WISH METEORS)
+         ========================================== -->
+    <section class="journey-section" id="sec-meteors">
+      <div class="meteors-wrapper">
+        <div class="meteors-header">
+          <span class="badge-galaxy">Cầu Được Ước Thấy</span>
+          <h2>Cơn Mưa Sao Băng Ước Nguyện</h2>
+          <p>Mỗi vệt sao băng rực sáng mang theo lời cầu chúc tốt đẹp nhất sẽ thành hiện thực</p>
+        </div>
+
+        <div class="wishing-station">
+          <p style="text-align: center; font-size: 0.95rem; color: var(--color-pink-soft);">
+            Chọn một điều ước nhanh hoặc tự tay viết điều nàng mong muốn gửi vào vũ trụ:
+          </p>
+
+          <!-- Quick Wish Tags -->
+          <div class="wishing-quick-tags">
+            <span class="wish-tag-pill active" data-wish="Mong bạn luôn mỉm cười rạng rỡ và an yên mỗi ngày"> Luôn Mỉm Cười</span>
+            <span class="wish-tag-pill" data-wish="Chúc mọi ước mơ và dự định của bạn đều thành công rực rỡ"> Ước Mơ Thành Công</span>
+            <span class="wish-tag-pill" data-wish="Mong bạn luôn được trân trọng, nâng niu và yêu thương vô điều kiện"> Ngập Tràn Yêu Thương</span>
+            <span class="wish-tag-pill" data-wish="Mãi mãi xinh đẹp, tự tin và kiêu hãnh như một nữ hoàng"> Mãi Mãi Rạng Ngời</span>
+          </div>
+
+          <!-- Input + Send Wish Button -->
+          <div class="wishing-form">
+            <input type="text" class="wish-text-input" id="wish-text-input" value="Mong bạn luôn mỉm cười rạng rỡ và an yên mỗi ngày" placeholder="Viết điều ước 20/10 của bạn vào đây...">
+            <button class="btn-send-wish" id="btn-send-wish">
+              <span>Phóng Lên Trời</span> 🚀
+            </button>
+          </div>
+
+          <!-- Wish text displayed in sky after shooting -->
+          <div class="sky-wish-display" id="sky-wish-display"></div>
+
+          <!-- Crystal Wish Jar Trigger -->
+          <div class="wish-jar-section" id="wish-jar-trigger" title="Nhấn để rút một điều ước ngẫu nhiên từ lọ sao">
+            <div class="jar-icon-box">
+              <svg viewBox="0 0 60 75" fill="none">
+                <!-- Glass Bottle -->
+                <path d="M22 10 L38 10 L38 18 C48 24 52 38 52 60 C52 70 44 72 30 72 C16 72 8 70 8 60 C8 38 12 24 22 18 Z" fill="rgba(255, 182, 217, 0.2)" stroke="#ff75a0" stroke-width="2" />
+                <!-- Cork -->
+                <rect x="23" y="4" width="14" height="6" rx="2" fill="#d97706" />
+                <!-- Stars inside jar -->
+                <circle cx="24" cy="45" r="3" fill="#ffeaa7" />
+                <circle cx="36" cy="52" r="2.5" fill="#ffffff" />
+                <circle cx="30" cy="38" r="3" fill="#ff4d94" />
+                <circle cx="22" cy="58" r="2" fill="#c084fc" />
+              </svg>
+            </div>
+            <div class="jar-text">
+              <h4>Lọ Thủy Tinh Ước Nguyện</h4>
+              <p>Chạm vào chiếc lọ để rút ngẫu nhiên một thông điệp may mắn từ dải ngân hà ✨</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 7: LÁ THƯ CUỐI CÙNG (GRAND 20/10 LETTER)
+         ========================================== -->
+    <section class="journey-section" id="sec-letter">
+      <div class="letter-wrapper">
+        <div class="letter-header">
+          <span class="letter-badge-heart">💖</span>
+          <h2>CHÚC MỪNG NGÀY 20/10</h2>
+          <p style="color: var(--color-pink-soft);">Tất cả ánh sáng vũ trụ hội tụ gửi gắm tới bạn</p>
+        </div>
+
+        <!-- 3D Greeting Card Envelope -->
+        <div class="envelope-card">
+          <div class="letter-salutation">
+            Gửi <span class="recipient-name-display">Nàng Thơ Tuyệt Vời</span> thương mến, 🌸
+          </div>
+
+          <div class="letter-body">
+            <p>
+              Hôm nay là Ngày Phụ nữ Việt Nam 20/10 — ngày mà cả thế giới cùng hướng về để tôn vinh những người phụ nữ dịu dàng, tài năng và tuyệt vời nhất.
+            </p>
+
+            <div class="letter-quote-highlight" id="letter-quote-text">
+              “Chúc bạn luôn rạng rỡ như những vì sao, dịu dàng nhưng mạnh mẽ, luôn được trân trọng, yêu thương và tự do trở thành phiên bản tuyệt vời nhất của chính mình!”
+            </div>
+
+            <p>
+              Dù ngoài kia cuộc sống có hối hả hay bề bộn, mong nàng hãy luôn nhớ rằng: Bạn là duy nhất, bạn xứng đáng với mọi điều ngọt ngào nhất trên thế gian này. Hãy luôn mỉm cười và tự tin tỏa sáng nhé!
+            </p>
+          </div>
+
+          <div class="letter-signature">
+            Thân thương từ Pink Galaxy ✨
+          </div>
+
+          <!-- Letter Actions -->
+          <div class="letter-actions">
+            <button class="btn-secondary" id="btn-cycle-wish">
+              <span>✨ Nhận Một Lời Chúc Khác</span>
+            </button>
+            <button class="btn-secondary" id="btn-share-card">
+              <span>💌 Sao Chép Thiệp Gửi Tặng</span>
+            </button>
+            <button class="btn-secondary" id="btn-restart-journey">
+              <span>🔄 Khởi Đầu Lại Hành Trình</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Reusable Glassmorphism Modal -->
+  <div class="modal-overlay" id="glass-modal">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Đóng">✕</button>
+      <div class="modal-icon-badge" id="modal-icon">🪐</div>
+      <h3 class="modal-title" id="modal-title">Tiêu Đề Lời Chúc</h3>
+      <p class="modal-subtitle" id="modal-subtitle">Dành riêng cho bạn</p>
+      <div class="modal-body-text" id="modal-body">
+        Nội dung lời chúc...
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Alert -->
+  <div class="toast-notice" id="toast-notice">
+    Thông báo vũ trụ
+  </div>
+
+  <!-- JavaScript Engines -->
+  <script src="js/three.min.js"></script>
+  <script src="js/galaxy.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/saturn3d.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+
