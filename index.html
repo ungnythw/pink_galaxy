@@ -70,12 +70,16 @@
 
   <!-- Bottom Journey Step Bar -->
   <div class="bottom-controls">
-    <button class="btn-nav-step" id="btn-prev" disabled>
-      <span>◄</span> Cảnh Trước
+    <button class="btn-nav-step btn-nav-prev" id="btn-prev" disabled aria-label="Cảnh trước">
+      <span class="nav-arrow">◀</span>
+      <span class="nav-text">Trước</span>
     </button>
-    <span class="step-counter" id="step-counter">1 / 7</span>
-    <button class="btn-nav-step" id="btn-next">
-      Tiếp Tục Du Hành <span>►</span>
+    <div class="step-counter-box">
+      <span class="step-counter" id="step-counter">1 / 7</span>
+    </div>
+    <button class="btn-nav-step btn-nav-next" id="btn-next" aria-label="Tiếp theo">
+      <span class="nav-text">Tiếp theo</span>
+      <span class="nav-arrow">▶</span>
     </button>
   </div>
 
@@ -224,36 +228,36 @@
 
             <!-- ================= CONST-STARS LAYER ================= -->
             <!-- Crown Stars -->
-            <g class="const-star-group" transform="translate(250, 48)"><circle class="const-star-halo" r="7"/><circle class="const-star-core gold-star" r="3.5"/></g>
-            <g class="const-star-group" transform="translate(275, 24)"><circle class="const-star-halo" r="7"/><circle class="const-star-core gold-star" r="4"/></g>
-            <g class="const-star-group" transform="translate(300, 40)"><circle class="const-star-halo" r="8"/><circle class="const-star-core gold-star" r="4.5"/></g>
-            <g class="const-star-group" transform="translate(325, 24)"><circle class="const-star-halo" r="7"/><circle class="const-star-core gold-star" r="4"/></g>
-            <g class="const-star-group" transform="translate(350, 48)"><circle class="const-star-halo" r="7"/><circle class="const-star-core gold-star" r="3.5"/></g>
-            <g class="const-star-group" transform="translate(300, 56)"><circle class="const-star-halo" r="6"/><circle class="const-star-core gold-star" r="3"/></g>
+            <g class="const-star-group" transform="translate(250, 48)"><circle class="const-star-hit" r="18" fill="transparent"/><circle class="const-star-halo" r="7"/><circle class="const-star-core gold-star" r="3.5"/></g>
+            <g class="const-star-group" transform="translate(275, 24)"><circle class="const-star-hit" r="18" fill="transparent"/><circle class="const-star-halo" r="7"/><circle class="const-star-core gold-star" r="4"/></g>
+            <g class="const-star-group" transform="translate(300, 40)"><circle class="const-star-hit" r="18" fill="transparent"/><circle class="const-star-halo" r="8"/><circle class="const-star-core gold-star" r="4.5"/></g>
+            <g class="const-star-group" transform="translate(325, 24)"><circle class="const-star-hit" r="18" fill="transparent"/><circle class="const-star-halo" r="7"/><circle class="const-star-core gold-star" r="4"/></g>
+            <g class="const-star-group" transform="translate(350, 48)"><circle class="const-star-hit" r="18" fill="transparent"/><circle class="const-star-halo" r="7"/><circle class="const-star-core gold-star" r="3.5"/></g>
+            <g class="const-star-group" transform="translate(300, 56)"><circle class="const-star-hit" r="18" fill="transparent"/><circle class="const-star-halo" r="6"/><circle class="const-star-core gold-star" r="3"/></g>
 
             <!-- Outer Heart Stars -->
-            <g class="const-star-group" transform="translate(300, 115)"><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="4.5"/></g>
-            <g class="const-star-group" transform="translate(250, 85)"><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="4.5"/></g>
-            <g class="const-star-group" transform="translate(195, 105)"><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="5"/></g>
-            <g class="const-star-group" transform="translate(150, 160)"><circle class="const-star-halo" r="9"/><circle class="const-star-core" r="5.5"/></g>
-            <g class="const-star-group" transform="translate(170, 230)"><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="5"/></g>
-            <g class="const-star-group" transform="translate(230, 290)"><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="5"/></g>
+            <g class="const-star-group" transform="translate(300, 115)"><circle class="const-star-hit" r="20" fill="transparent"/><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="4.5"/></g>
+            <g class="const-star-group" transform="translate(250, 85)"><circle class="const-star-hit" r="20" fill="transparent"/><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="4.5"/></g>
+            <g class="const-star-group" transform="translate(195, 105)"><circle class="const-star-hit" r="20" fill="transparent"/><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="5"/></g>
+            <g class="const-star-group" transform="translate(150, 160)"><circle class="const-star-hit" r="20" fill="transparent"/><circle class="const-star-halo" r="9"/><circle class="const-star-core" r="5.5"/></g>
+            <g class="const-star-group" transform="translate(170, 230)"><circle class="const-star-hit" r="20" fill="transparent"/><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="5"/></g>
+            <g class="const-star-group" transform="translate(230, 290)"><circle class="const-star-hit" r="20" fill="transparent"/><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="5"/></g>
             
             <!-- Bottom Tip (Grand Celestial Star) -->
-            <g class="const-star-group" transform="translate(300, 350)"><circle class="const-star-halo" r="11"/><circle class="const-star-core gold-star" r="6.5"/></g>
+            <g class="const-star-group" transform="translate(300, 350)"><circle class="const-star-hit" r="22" fill="transparent"/><circle class="const-star-halo" r="11"/><circle class="const-star-core gold-star" r="6.5"/></g>
 
-            <g class="const-star-group" transform="translate(370, 290)"><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="5"/></g>
-            <g class="const-star-group" transform="translate(430, 230)"><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="5"/></g>
-            <g class="const-star-group" transform="translate(450, 160)"><circle class="const-star-halo" r="9"/><circle class="const-star-core" r="5.5"/></g>
-            <g class="const-star-group" transform="translate(405, 105)"><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="5"/></g>
-            <g class="const-star-group" transform="translate(350, 85)"><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="4.5"/></g>
+            <g class="const-star-group" transform="translate(370, 290)"><circle class="const-star-hit" r="20" fill="transparent"/><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="5"/></g>
+            <g class="const-star-group" transform="translate(430, 230)"><circle class="const-star-hit" r="20" fill="transparent"/><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="5"/></g>
+            <g class="const-star-group" transform="translate(450, 160)"><circle class="const-star-hit" r="20" fill="transparent"/><circle class="const-star-halo" r="9"/><circle class="const-star-core" r="5.5"/></g>
+            <g class="const-star-group" transform="translate(405, 105)"><circle class="const-star-hit" r="20" fill="transparent"/><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="5"/></g>
+            <g class="const-star-group" transform="translate(350, 85)"><circle class="const-star-hit" r="20" fill="transparent"/><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="4.5"/></g>
 
             <!-- Inner Heart Stars -->
-            <g class="const-star-group" transform="translate(235, 185)"><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="4.5"/></g>
-            <g class="const-star-group" transform="translate(365, 185)"><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="4.5"/></g>
+            <g class="const-star-group" transform="translate(235, 185)"><circle class="const-star-hit" r="20" fill="transparent"/><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="4.5"/></g>
+            <g class="const-star-group" transform="translate(365, 185)"><circle class="const-star-hit" r="20" fill="transparent"/><circle class="const-star-halo" r="8"/><circle class="const-star-core" r="4.5"/></g>
             
             <!-- Pulsing Heart Core Star -->
-            <g class="const-star-group" transform="translate(300, 215)"><circle class="const-star-halo" r="12"/><circle class="const-star-core core-pulse" r="7"/></g>
+            <g class="const-star-group" transform="translate(300, 215)"><circle class="const-star-hit" r="24" fill="transparent"/><circle class="const-star-halo" r="12"/><circle class="const-star-core core-pulse" r="7"/></g>
           </svg>
         </div>
 
@@ -761,6 +765,9 @@
             <span class="pet-action-prompt">Chạm vào tớ để mở phong thư đặc biệt 🐶</span>
           </div>
         </div>
+
+        <!-- Mobile Swipe Indicator Hint -->
+        <p class="mobile-pets-hint">👈 Vuốt ngang để gặp gỡ các bạn nhỏ 👉</p>
 
         <!-- Secret Easter Egg Star -->
         <div style="margin-top: 24px; cursor: pointer;" id="secret-pet-star" title="Bí mật thiên hà ẩn giấu...">

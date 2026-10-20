@@ -54,11 +54,16 @@ class Saturn3DEngine {
   init() {
     const width = this.container.clientWidth || 540;
     const height = this.container.clientHeight || 380;
+    const isMobile = width < 520 || window.innerWidth < 600;
 
-    // 1. Scene & Camera
+    // 1. Scene & Camera (Adjusted for phone screens so rings & cards never clip)
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-    this.camera.position.set(0, 1.2, 12.0);
+    if (isMobile) {
+      this.camera.position.set(0, 0.9, 14.5);
+    } else {
+      this.camera.position.set(0, 1.2, 12.0);
+    }
 
     // 2. WebGL Renderer with alpha transparency
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
@@ -239,6 +244,7 @@ class Saturn3DEngine {
 
   setupDragEvents() {
     const el = this.renderer.domElement;
+    el.style.touchAction = 'none'; // Essential for mobile: dragging Saturn exclusively spins the planet without page scrolling
     let startX = 0;
     let startY = 0;
     let hasDragged = false;
@@ -332,8 +338,14 @@ class Saturn3DEngine {
     if (!this.container || !this.renderer || !this.camera) return;
     const width = this.container.clientWidth || 540;
     const height = this.container.clientHeight || 380;
+    const isMobile = width < 520 || window.innerWidth < 600;
 
     this.camera.aspect = width / height;
+    if (isMobile) {
+      this.camera.position.set(0, 0.9, 14.5);
+    } else {
+      this.camera.position.set(0, 1.2, 12.0);
+    }
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(width, height);
   }
@@ -343,8 +355,9 @@ class Saturn3DEngine {
 
     const width = this.container.clientWidth || 540;
     const height = this.container.clientHeight || 380;
-    // Elegant orbit radius around the planet
-    const radius = 5.4;
+    const isMobile = width < 520 || window.innerWidth < 600;
+    // Elegant orbit radius around the planet (scaled down slightly on narrow mobile phones)
+    const radius = isMobile ? 4.3 : 5.4;
 
     this.wishNodes.forEach((node, i) => {
       const angle = this.orbitAngle + (i * (Math.PI * 2 / this.wishNodes.length));

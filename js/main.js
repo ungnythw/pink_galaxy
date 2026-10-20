@@ -52,12 +52,14 @@ document.addEventListener('DOMContentLoaded', () => {
       currentSection.classList.add('warp-out');
       setTimeout(() => {
         currentSection.classList.remove('active', 'warp-out');
+        targetSection.scrollTop = 0;
         targetSection.classList.add('active');
         currentSectionIndex = index;
         onSectionChanged(index);
       }, 700);
     } else {
       currentSection.classList.remove('active');
+      targetSection.scrollTop = 0;
       targetSection.classList.add('active');
       currentSectionIndex = index;
       onSectionChanged(index);
@@ -143,21 +145,50 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Touch Swipe for mobile devices
+  // Touch Navigation for mobile devices
+  // Horizontal swipe navigates sections without blocking native vertical page scrolling!
+  let touchStartX = 0;
   let touchStartY = 0;
+  let isTouchValid = false;
+
   window.addEventListener('touchstart', (e) => {
-    if (e.touches.length > 0) touchStartY = e.touches[0].clientY;
+    if (e.touches.length === 1) {
+      const touch = e.touches[0];
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+
+      // Do NOT trigger section swipe if touch started on 3D planet canvas, form inputs, modal card, or horizontal pets carousel
+      const target = e.target;
+      if (
+        target.closest('#saturn-3d-canvas-container') ||
+        target.closest('input') ||
+        target.closest('textarea') ||
+        target.closest('.modal-card') ||
+        target.closest('.pets-grid')
+      ) {
+        isTouchValid = false;
+      } else {
+        isTouchValid = true;
+      }
+    }
   }, { passive: true });
 
   window.addEventListener('touchend', (e) => {
-    if (e.changedTouches.length > 0) {
-      const diffY = touchStartY - e.changedTouches[0].clientY;
-      if (Math.abs(diffY) > 60) {
-        if (diffY > 0 && currentSectionIndex < sections.length - 1) {
-          goToSection(currentSectionIndex + 1);
-        } else if (diffY < 0 && currentSectionIndex > 0) {
-          goToSection(currentSectionIndex - 1);
-        }
+    if (!isTouchValid || e.changedTouches.length === 0) return;
+    const touch = e.changedTouches[0];
+    const diffX = touchStartX - touch.clientX;
+    const diffY = touchStartY - touch.clientY;
+
+    // Must be a deliberate horizontal swipe:
+    // 1. Horizontal distance > 65px
+    // 2. Horizontal distance must be significantly greater than vertical distance (distinguish from vertical scroll)
+    if (Math.abs(diffX) > 65 && Math.abs(diffX) > Math.abs(diffY) * 1.6) {
+      if (diffX > 0 && currentSectionIndex < sections.length - 1) {
+        // Swiped Left -> Go Next Section
+        goToSection(currentSectionIndex + 1);
+      } else if (diffX < 0 && currentSectionIndex > 0) {
+        // Swiped Right -> Go Previous Section
+        goToSection(currentSectionIndex - 1);
       }
     }
   }, { passive: true });
